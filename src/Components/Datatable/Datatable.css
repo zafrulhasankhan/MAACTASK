@@ -1,0 +1,56 @@
+/* DataTable.css */
+.table-container {
+  font-size: 16px; /* Increase font size of table data */
+}
+
+.table-container table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 12px; /* Increase padding for better spacing */
+  border: 1px solid #e2e8f0;
+}
+
+.table-container th {
+  background-color: #f7fafc;
+  font-size: 18px; /* Increase font size of table head */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center; /* Center align the search bar */
+  margin-bottom: 20px; /* Increase margin bottom for spacing */
+}
+
+.search-container input {
+  padding: 10px 20px; /* Increase padding for the search bar */
+  font-size: 16px; /* Increase font size of search bar */
+  border-radius: 9999px; /* Make search bar more rounded */
+  border: 1px solid #cbd5e0;
+  outline: none;
+}
+
+.search-container input::placeholder {
+  color: #a0aec0;
+}
+
+.search-container .search-icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 640px) {
+  .table-container {
+    font-size: 14px; /* Decrease font size for smaller screens */
+  }
+
+  .search-container input {
+    padding: 8px 16px; /* Decrease padding for smaller screens */
+  }
+}
