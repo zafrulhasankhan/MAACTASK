@@ -1,7 +1,7 @@
 import * as React from "react";
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-
+import { Link, useNavigate } from 'react-router-dom';
 function Registration(props) {
   const [newUser, setNewUser] = useState({})
 
@@ -50,11 +50,7 @@ function Registration(props) {
   return (
     <div className="flex flex-col bg-white">
       <div className="flex overflow-hidden relative flex-col items-center pt-5 pb-12 w-full font-medium leading-[150%] min-h-[1569px] max-md:max-w-full">
-        <img
-          loading="lazy"
-          srcSet="..."
-          className="object-cover absolute inset-0 size-full"
-        />
+      
         <div className="flex relative gap-5 justify-between w-full text-sm whitespace-nowrap max-w-[1216px] max-md:flex-wrap max-md:max-w-full">
           <img
             loading="lazy"
@@ -62,78 +58,80 @@ function Registration(props) {
             className="max-w-full aspect-[2.13] w-[102px]"
           />
           <div className="flex gap-4 items-start self-start">
-            <div className="grow justify-center px-6 py-3 text-white bg-blue-700 rounded-lg max-md:px-5">
+            <Link to="/login" className="flex-grow justify-center px-6 py-3 text-white bg-blue-700 rounded-lg max-md:px-5">
               Login
-            </div>
+            </Link>
             <div className="flex flex-col flex-1 justify-center py-px text-blue-700 bg-blue-700 rounded-lg">
-              <div className="z-10 justify-center px-6 py-3 bg-sky-50 rounded-lg border border-blue-700 border-solid max-md:px-5">
-                Registration
-              </div>
+              <Link to="/register" className="flex flex-col flex-1 justify-center py-px text-blue-700 bg-blue-700 rounded-lg">
+                <div className="z-10 justify-center px-6 py-3 bg-sky-50 rounded-lg border border-blue-700 border-solid max-md:px-5">
+                  Registration
+                </div>
+              </Link>
             </div>
           </div>
         </div>
         <div className="relative self-stretch mt-5 w-full bg-slate-300 min-h-[1px] max-md:max-w-full" />
         <div className="flex relative justify-center items-center px-16 py-12 mt-28 mb-10 w-full max-w-screen-lg text-xl bg-white rounded-[32px] text-zinc-500 max-md:px-5 max-md:mt-10 max-md:max-w-full">
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-col mt-12 mb-8 max-w-full w-[609px] max-md:mt-10">
-            <div className="self-center text-5xl font-bold text-center text-gray-900 whitespace-nowrap max-md:text-4xl">
-              Create Account
-            </div>
-            <div className="self-center mt-11 text-2xl font-light text-center text-neutral-600 max-md:mt-10 max-md:max-w-full">
-              Fill in the details below to create an account
-            </div>
-            <div className="mt-16 max-md:mt-10 max-md:max-w-full">
-              Enter Your Full Name
-              <input name="name" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Full Name" />
-            </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              Enter Your Email
-              <input name="email" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Email" />
-            </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              Your ID
-              <input name="employeeId" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Id" />
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col mt-12 mb-8 max-w-full w-[609px] max-md:mt-10">
+              <div className="self-center text-5xl font-bold text-center text-gray-900 whitespace-nowrap max-md:text-4xl">
+                Create Account
               </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              Your Mobile Number
-              <input name="phoneNumber" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Mobile Number" />
-            </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              Password
-            <input name="password" onChange={handleChange} type="password" className="form-control" placeholder="Password" />
-            </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              Confirm Password
-              <input name="passwordConfirm" onChange={handleChange} type="password" className="form-control" placeholder="Confirm Password" />
-            </div>
-            <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="flex gap-5 justify-between px-px mt-11 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-              <div className="flex-auto self-start mt-2">Select Your Role</div>
-              <input name="role" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Role" />
-            
-            </div>
-            <div className="shrink-0 mt-7 h-0.5 bg-neutral-200 max-md:max-w-full" />
-            <div className="flex gap-4 justify-between mt-10 text-blue-700 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-              <div className="w-7 h-7 bg-white rounded border border-black border-solid" />
-              <div className="flex-auto max-md:max-w-full">
-  
-                I read and agree to the{" "}
-                <span className="text-blue-700">Terms & Conditions</span>
+              <div className="self-center mt-11 text-2xl font-light text-center text-neutral-600 max-md:mt-10 max-md:max-w-full">
+                Fill in the details below to create an account
+              </div>
+              <div className="mt-16 max-md:mt-10 max-md:max-w-full">
+                Enter Your Full Name
+                <input name="name" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Full Name" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="mt-12 max-md:mt-10 max-md:max-w-full">
+                Enter Your Email
+                <input name="email" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Email" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="mt-12 max-md:mt-10 max-md:max-w-full">
+                Your ID
+                <input name="employeeId" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Id" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="mt-12 max-md:mt-10 max-md:max-w-full">
+                Your Mobile Number
+                <input name="phoneNumber" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Mobile Number" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="mt-12 max-md:mt-10 max-md:max-w-full">
+                Password
+                <input name="password" onChange={handleChange} type="password" className="form-control" placeholder="Password" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="mt-12 max-md:mt-10 max-md:max-w-full">
+                Confirm Password
+                <input name="passwordConfirm" onChange={handleChange} type="password" className="form-control" placeholder="Confirm Password" />
+              </div>
+              <div className="shrink-0 mt-8 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="flex gap-5 justify-between px-px mt-11 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+                <div className="flex-auto self-start mt-2">Select Your Role</div>
+                <input name="role" onChange={handleChange} type="text" className="form-control" placeholder="Enter Your Role" />
+
+              </div>
+              <div className="shrink-0 mt-7 h-0.5 bg-neutral-200 max-md:max-w-full" />
+              <div className="flex gap-4 justify-between mt-10 text-blue-700 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+                <div className="w-7 h-7 bg-white rounded border border-black border-solid" />
+                <div className="flex-auto max-md:max-w-full">
+
+                  I read and agree to the{" "}
+                  <span className="text-blue-700">Terms & Conditions</span>
+                </div>
+              </div>
+              <button type="submit" className="justify-center items-center px-16 py-6 mt-12 font-extrabold text-center text-white whitespace-nowrap bg-blue-700 rounded-lg leading-[130%] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+                Create Account
+              </button>
+              <div className="self-center mt-20 text-2xl text-blue-700 whitespace-nowrap max-md:mt-10">
+                Already have an account?{" "}
+                <span className="text-blue-700">Sign In</span>
               </div>
             </div>
-            <button type="submit" className="justify-center items-center px-16 py-6 mt-12 font-extrabold text-center text-white whitespace-nowrap bg-blue-700 rounded-lg leading-[130%] max-md:px-5 max-md:mt-10 max-md:max-w-full">
-              Create Account
-            </button>
-            <div className="self-center mt-20 text-2xl text-blue-700 whitespace-nowrap max-md:mt-10">
-              Already have an account?{" "}
-              <span className="text-blue-700">Sign In</span>
-            </div>
-          </div>
           </form>
         </div>
       </div>
